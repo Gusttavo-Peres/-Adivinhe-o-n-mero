@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo de Adivinhação</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #eee;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #ff4747;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ff1c1c;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎲 Adivinhe o número!</h1>
+  <p>Escolha um número entre 1 e 10:</p>
+
+  <input type="number" id="palpite" min="1" max="10">
+  <button onclick="verificar()">Chutar!</button>
+
+  <p id="resultado"></p>
+
+  <script>
+    const numeroSecreto = Math.floor(Math.random() * 10) + 1;
+
+    function verificar() {
+      const palpite = parseInt(document.getElementById("palpite").value);
+      const resultado = document.getElementById("resultado");
+
+      if (palpite === numeroSecreto) {
+        resultado.innerHTML = "🎉 Parabéns! Você acertou!";
+      } else if (palpite > 10 || palpite < 1) {
+        resultado.innerHTML = "⚠️ Escolha um número entre 1 e 10!";
+      } else {
+        resultado.innerHTML = "❌ Errou! Tente novamente!";
+      }
+    }
+  </script>
+
+</body>
+</html>
